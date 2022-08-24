@@ -1,0 +1,38 @@
+﻿
+
+@using EntityLayer.Concrete 
+@model List<Category>
+@{
+    Layout = null;                                 
+}                                                  
+                                                   
+<!DOCTYPE html>                                    
+                                                   
+
+<table >
+  <tr>
+               <th>
+                  Kategori
+               </th>
+               <th>
+                   Kategori Adı
+               </th>
+               <th>
+                   Durumu
+               </th>
+               <th>
+                   Detayları
+               </th>
+              
+    </tr>
+       @foreach (var item in Model)
+        {
+            <tr>
+                <td>  @item.CategoryID;</td>
+                   <td>    @item.CategoryName;</td>
+                       <td>   @item.CategoryDescription;     </td>
+                    <td> @item.CategoryStatus; </td>
+                             
+            </tr>  
+    
+        }

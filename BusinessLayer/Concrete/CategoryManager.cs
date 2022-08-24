@@ -16,6 +16,7 @@ namespace BusinessLayer.Concrete
         {
             _categoryDal = categoryDal;
         }
+
         public void AddCategory(Category category)
         {
             _categoryDal.Insert(category);

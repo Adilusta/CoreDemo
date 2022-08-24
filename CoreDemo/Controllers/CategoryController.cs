@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
     public class CategoryController : Controller
     {
-        public IActionResult Index()
+        CategoryManager _categoryManager = new CategoryManager(new EfCategoryRepository());
+        public IActionResult GetCategories()
         {
-            return View();
+          var values = _categoryManager.GetCategories();
+            return View(values);
         }
     }
 }

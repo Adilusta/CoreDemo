@@ -17,29 +17,27 @@ namespace BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
-        public void AddCategory(Category category)
+        //Kategori ekler
+        public void AddEntity(Category entity)
         {
-            _categoryDal.Insert(category);
+            _categoryDal.Insert(entity);
         }
-
-        public void DeleteCategory(Category category)
+        public void DeleteEntity(Category entity)
         {
-            _categoryDal.Delete(category);
+            _categoryDal.Delete(entity);
         }
-
-        public List<Category> GetCategories()
-        {
-           return _categoryDal.GetAll();
-        }
-
-        public Category GetCategory(int id)
+        public Category GetEntity(int id)
         {
             return _categoryDal.GetEntityByID(id);
         }
 
-        public void UpdateCategory(Category category)
+        public List<Category> GetListEntity()
         {
-            _categoryDal.Update(category);
+            return _categoryDal.GetAll();
+        }
+        public void UpdateEntity(Category entity)
+        {
+            _categoryDal.Update(entity);
         }
     }
 }

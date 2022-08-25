@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class GenericRepository<TEntity, TContext> : IGenericDal<TEntity> where TEntity : class, IEntity, new()
-                                                                            where TContext : DbContext, new()
+    public class GenericRepository<TEntity, TContext> : IGenericDal<TEntity> where TEntity : class, IEntity, new() where TContext : DbContext, new()
+
     {
         public void Delete(TEntity entity)
         {

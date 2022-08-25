@@ -10,7 +10,7 @@ namespace CoreDemo.Controllers
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryRepository());
         public IActionResult GetCategories()
         {
-          var values = _categoryManager.GetCategories();
+          var values = _categoryManager.GetListEntity();
             return View(values);
         }
     }

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICategoryService : IService<Category>
+    public interface IBlogService : IService <Blog>
     {
-       
     }
 }

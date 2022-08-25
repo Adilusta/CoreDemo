@@ -7,15 +7,17 @@
 }                                                  
                                                    
 <!DOCTYPE html>                                    
-                                                   
+    
 
-<table >
+<link href="~/coreblogtema/css/bootstrap.css" rel="stylesheet" />
+<table class="table table-bordered" >
+    
   <tr>
                <th>
                   Kategori
                </th>
                <th>
-                   Kategori Adı
+                   Kategori 
                </th>
                <th>
                    Durumu
@@ -28,11 +30,10 @@
        @foreach (var item in Model)
         {
             <tr>
-                <td>  @item.CategoryID;</td>
-                   <td>    @item.CategoryName;</td>
-                       <td>   @item.CategoryDescription;     </td>
-                    <td> @item.CategoryStatus; </td>
-                             
+                <td>@item.CategoryID</td>
+                   <td> @item.CategoryName</td>
+                       <td>@item.CategoryDescription </td>
+                    <td>@item.CategoryStatus </td>    
             </tr>  
-    
         }
+  </table>

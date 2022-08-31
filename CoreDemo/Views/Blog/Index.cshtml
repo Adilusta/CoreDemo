@@ -16,21 +16,23 @@
 						@foreach (var item in Model)
 					{
 						<div class="col-lg-4 card" >
-							<a href="single.html">
-									<img src="@item.BlogThumbnailImage" style="width:300px; height:300px" class="card-img-top img-fluid" alt="" >
+									<a href="/Blog/BlogDetails/@item.BlogId">
+									<img src="@item.BlogThumbnailImage" 
+									style="width:300px; height:300px" class="card-img-top img-fluid" alt="" >
 							</a>
 							<div class="card-body">
 								
 									<h5 class="card-title">
-										<a href="single.html">@item.BlogTitle</a>
+												<a href="/Blog/BlogDetails/@item.BlogId">@item.BlogTitle</a>
 									</h5>
-									<p class="card-text mb-3">@item.BlogContent </p>
+									<p class="card-text mb-3">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,130).LastIndexOf(" "))...</p>
 	
-									<a href="single.html" class="btn btn-primary read-m">Read More</a>
+									<a href="/Blog/BlogDetails/@item.BlogId" class="btn btn-primary read-m">Devamını Oku</a>
 										<ul class="blog-icons my-4">
 										<li>
 											<a href="#">
-												<i class="far fa-calendar-alt"></i> @item.CreateDate</a>
+												<i class="far fa-calendar-alt"></i> 
+												@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))</a>
 										</li>
 										<li class="mx-2">
 											<a href="#">
@@ -38,7 +40,7 @@
 										</li>
 										<li>
 											<a href="#">
-												<i class="fas fa-eye"></i> @item.CategoryID </a>
+												<i class="fas fa-eye"></i> @item.Category.CategoryName</a>
 										</li>
 
 									</ul>

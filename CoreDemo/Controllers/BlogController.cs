@@ -11,8 +11,15 @@ namespace CoreDemo.Controllers
         IBlogService blogManager = new BlogManager(new EfBlogRepository());
         public IActionResult Index()
         {
-            var result = blogManager.GetListEntity();
+            var result = blogManager.GetBlogsWithCategory();
             return View(result);
         }
+        public IActionResult BlogDetails(int id)
+        {
+            ViewBag.BlogID = id;
+            var result = blogManager.GetBlogByBlogID(id);
+            return View(result);
+        }
+
     }
 }

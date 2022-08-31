@@ -1,3 +1,12 @@
+﻿
+@using EntityLayer.Concrete
+@model Blog
+
+
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
 <!--
 	Author: W3layouts
 	Author URL: http://w3layouts.com
@@ -15,15 +24,7 @@
 	<meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="css/single.css">
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -44,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="b-grid-top">
 							<div class="blog_info_left_grid">
 								<a href="single.html">
-									<img src="images/b1.jpg" class="img-fluid" alt="">
+									<img src="~/CoreBlogTema/images/b1.jpg" class="img-fluid" alt="">
 								</a>
 							</div>
 							<div class="blog-info-middle">
@@ -67,58 +68,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 
 						<h3>
-							<a href="single.html">Amet consectetur adipisicing </a>
+							 @Model.BlogTitle
 						</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-							aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco labor nisi ut aliquip exea commodo consequat duis
-							aute irudre dolor in elit sed uta labore dolore reprehender</p>
+						<p> 
+							@Model.BlogContent
+						</p>
 						
 					</div>
-
-					<div class="comment-top">
-						<h4>Comments</h4>
-						<div class="media">
-							<img src="images/t1.jpg" alt="" class="img-fluid" />
-							<div class="media-body">
-								<h5 class="mt-0">Joseph Goh</h5>
-								<p>Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
-									Cras a ornare elit.</p>
-
-								<div class="media mt-3">
-									<a class="d-flex pr-3" href="#">
-										<img src="images/t2.jpg" alt="" class="img-fluid" />
-									</a>
-									<div class="media-body">
-										<h5 class="mt-0">Richard Spark</h5>
-										<p>Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
-											Cras a ornare elit.</p>
-									</div>
-								</div>
-							</div>
-						</div>
+			
+					@await Component.InvokeAsync("CommentListByBlog",new {id= @ViewBag.BlogID} )
+					
+					
 					</div>
-					<div class="comment-top">
-						<h4>Leave a Comment</h4>
-						<div class="comment-bottom">
-							<form action="#" method="post">
-								<input class="form-control" type="text" name="Name" placeholder="Name" required="">
-								<input class="form-control" type="email" name="Email" placeholder="Email" required="">
-
-								<input class="form-control" type="text" name="Subject" placeholder="Subject" required="">
-
-								<textarea class="form-control" name="Message" placeholder="Message..." required=""></textarea>
-								<button type="submit" class="btn btn-primary submit">Submit</button>
-							</form>
-						</div>
-					</div>
-				</div>
 
 				<!--//left-->
 				<!--right-->
 				<aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
 					<div class="right-blog-info text-left">
 						<div class="tech-btm">
-							<img src="images/banner1.jpg" class="img-fluid" alt="">
+							<img src="~/CoreBlogTema/images/banner1.jpg" class="img-fluid" alt="">
 						</div>
 						<div class="tech-btm">
 							<h4>Sign up to our newsletter</h4>
@@ -129,30 +97,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</form>
 
 						</div>
+
+						@await Component.InvokeAsync("CategoryList")
+
 						<div class="tech-btm">
-							<h4>Categories</h4>
-							<ul class="list-group single">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-									  Cras justo odio
-									  <span class="badge badge-primary badge-pill">14</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-									  Dapibus ac facilisis in
-									  <span class="badge badge-primary badge-pill">2</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-									  Morbi leo risus
-									  <span class="badge badge-primary badge-pill">1</span>
-									</li>
-								  </ul>
-						</div>
-						<div class="tech-btm">
-							<h4>Top stories of the week</h4>
+							<h4>Yazarın Diğer Yazıları</h4>
 
 							<div class="blog-grids row mb-3">
 								<div class="col-md-5 blog-grid-left">
 									<a href="single.html">
-										<img src="images/1.jpg" class="img-fluid" alt="">
+										<img src="~/CoreBlogTema/images/1.jpg" class="img-fluid" alt="">
 									</a>
 								</div>
 								<div class="col-md-7 blog-grid-right">
@@ -170,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="blog-grids row mb-3">
 								<div class="col-md-5 blog-grid-left">
 									<a href="single.html">
-										<img src="images/6.jpg" class="img-fluid" alt="">
+										<img src="~/CoreBlogTema/images/6.jpg" class="img-fluid" alt="">
 									</a>
 								</div>
 								<div class="col-md-7 blog-grid-right">
@@ -209,11 +163,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 						<div class="single-gd tech-btm">
-							<h4>Recent Post</h4>
+							<h4>En Son Eklenen Yazı</h4>
 							<div class="blog-grids">
 								<div class="blog-grid-left">
 									<a href="single.html">
-										<img src="images/b1.jpg" class="img-fluid" alt="">
+										<img src="~/CoreBlogTema/images/b1.jpg" class="img-fluid" alt="">
 									</a>
 								</div>
 								<div class="blog-grid-right">
@@ -235,50 +189,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--//main-->
 
 	
-	<!---->
-	<!-- js -->
-	<script src="js/jquery-2.2.3.min.js"></script>
-	<!-- //js -->
-	<!--/ start-smoth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 900);
-			});
-		});
-	</script>
-	<!--// end-smoth-scrolling -->
-
-	<script>
-		$(document).ready(function () {
-			/*
-									var defaults = {
-							  			containerID: 'toTop', // fading element id
-										containerHoverID: 'toTopHover', // fading element hover id
-										scrollSpeed: 1200,
-										easingType: 'linear' 
-							 		};
-									*/
-
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
-
-		});
-	</script>
-	<a href="#home" class="scroll" id="toTop" style="display: block;">
-		<span id="toTopHover" style="opacity: 1;"> </span>
-	</a>
-
-	<!-- //Custom-JavaScript-File-Links -->
-	<script src="js/bootstrap.js"></script>
-
-
+	
 </body>
 
 </html>
+

@@ -26,9 +26,9 @@ namespace BusinessLayer.Concrete
         {
             _categoryDal.Delete(entity);
         }
-        public Category GetEntity(int id)
+        public Category GetCategoryByCategoryID(int id)
         {
-            return _categoryDal.GetEntityByID(id);
+            return _categoryDal.GetEntity(p => p.CategoryID == id);
         }
 
         public List<Category> GetListEntity()

@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IBlogService : IService <Blog>
     {
+        List<Blog> GetBlogsWithCategory();
+        Blog GetBlogByBlogID(int id);
     }
 }

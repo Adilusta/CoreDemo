@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,14 +22,24 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
-        public List<TEntity> GetAll()
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().ToList();
+                if (filter!= null)
+                {
+                    return context.Set<TEntity>().Where(filter).ToList();
+                   
+                }
+                else
+                {
+                    return context.Set<TEntity>().ToList();
+                }
+               
 
             }
         }
+
 
         public TEntity GetEntityByID(int id)
         {
@@ -54,6 +65,14 @@ namespace DataAccessLayer.EntityFramework
             {
                 context.Update(entity);
                 context.SaveChanges();
+            }
+        }
+
+        public TEntity GetEntity(Expression<Func<TEntity, bool>> filter)
+        {
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().Where(filter).SingleOrDefault();
             }
         }
     }

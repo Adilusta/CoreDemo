@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,10 @@ namespace BusinessLayer.Concrete
         {
             _blogDal = blogDal;
         }
+        public List<Blog> GetListEntity()
+        {
+            return _blogDal.GetAll();
+        }
         public void AddEntity(Blog entity)
         {
             _blogDal.Insert(entity);
@@ -26,19 +31,22 @@ namespace BusinessLayer.Concrete
             _blogDal.Delete(entity);
         }
 
-        public Blog GetEntity(int id)
-        {
-            return _blogDal.GetEntityByID(id);
-        }
-
-        public List<Blog> GetListEntity()
-        {
-            return _blogDal.GetAll();
-        }
 
         public void UpdateEntity(Blog entity)
         {
             _blogDal.Update(entity);
         }
+
+        public List<Blog> GetBlogsWithCategory()
+        {
+          return _blogDal.GetListBlogsWithCategory();
+        }
+
+        public Blog GetBlogByBlogID(int id)
+        {
+            return _blogDal.GetEntity(p=>p.BlogId==id);
+        }
+
+       
     }
 }

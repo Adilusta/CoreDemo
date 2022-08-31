@@ -3,6 +3,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,5 @@ namespace BusinessLayer.Abstract
         void DeleteEntity(TEntity entity);
         void UpdateEntity(TEntity entity);
         List<TEntity> GetListEntity();
-        TEntity GetEntity(int id);
     }
 }

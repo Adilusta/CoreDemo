@@ -1,0 +1,25 @@
+﻿
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div class="tech-btm">
+							<h4>Mail bültenimize abone olun</h4>
+							<p>Güncel haberler ve duyurlardan haberdar olmak için mail bültenimize abone olun.</p>
+							<form action="/NewsLetter/SubscribeMail/" method="post">
+								<input type="email" placeholder="Email" name="Mail" required="">
+								<input type="submit" id="btn1" value="Abone Ol">
+							</form>
+
+						</div>
+						<script>
+			$('#btn1').click(function() {
+
+				swal("Tebrikler" ,"Mail bültenimize başarıyla kayıt oldunuz","success");
+				
+
+
+
+			});
+		</script>

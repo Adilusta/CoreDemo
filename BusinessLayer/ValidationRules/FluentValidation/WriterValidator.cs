@@ -13,6 +13,7 @@ namespace BusinessLayer.ValidationRules.FluentValidation
 		public WriterValidator()
 		{
 			RuleFor(p => p.WriterName).NotEmpty().WithMessage("Ad soyad kısmı boş geçilemez.");
+			RuleFor(p => p.WriterName).MinimumLength(2).WithMessage("Adınız en az 2 harfli olabilir.");
 			RuleFor(p=>p.WriterPassword).NotEmpty().WithMessage("Şifre kısmı boş geçilemez");
 			RuleFor(p => p.WriterMail).NotEmpty().WithMessage("Mail kısmı boş geçilemez");
             RuleFor(p => p.WriterMail).EmailAddress().WithMessage("Lütfen mail formatında giriniz.");

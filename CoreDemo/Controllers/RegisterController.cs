@@ -4,10 +4,12 @@ using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         IWriterService writerManager = new WriterManager(new EfWriterRepository());
@@ -27,7 +29,7 @@ namespace CoreDemo.Controllers
                 writer.WriterStatus = true;
                 writer.WriterAbout = "deneme";
                 writerManager.AddEntity(writer);
-                return RedirectToAction("Index", "Blog");
+                return RedirectToAction("Index", "Login");
             }
             else
             {

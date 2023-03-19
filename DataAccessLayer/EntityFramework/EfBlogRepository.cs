@@ -17,13 +17,17 @@ namespace DataAccessLayer.EntityFramework
             using (Context context = new Context())
             {
                 return context.Blogs.Include(x => x.Category).ToList();
+                
             }
           
         }
 
-        
-        
-
-
+        public List<Blog> GetListWithCategoryByWriter(int writerID)
+        {
+            using (Context context = new Context())
+            {
+                return context.Blogs.Include(x => x.Category).Where(x => x.WriterID == writerID).ToList();
+            }
+        }
     }
 }

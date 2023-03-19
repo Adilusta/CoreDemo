@@ -19,8 +19,16 @@ namespace BusinessLayer.Concrete
 		{
 			_aboutDal = aboutDal;
 		}
+        public About GetEntityByID(int id)
+        {
+            return _aboutDal.GetEntity(x => x.AboutID == id);
+        }
+        public List<About> GetListEntity()
+        {
+            return _aboutDal.GetAll();
+        }
 
-		public void AddEntity(About entity)
+        public void AddEntity(About entity)
 		{
 			_aboutDal.Insert(entity);
 		}
@@ -30,10 +38,6 @@ namespace BusinessLayer.Concrete
 			_aboutDal.Delete(entity);
 		}
 
-		public List<About> GetListEntity()
-		{
-			return _aboutDal.GetAll();
-		}
 
 		public void UpdateEntity(About entity)
 		{

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using EntityLayer.Abstract;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLayer.Concrete
 {
@@ -18,6 +19,7 @@ namespace EntityLayer.Concrete
         public string BlogImage  { get; set; } // bloğun büyük resmi,resimleri dosya yolu olarak tutucaz
         public DateTime CreateDate { get; set; } 
         public bool BlogStatus { get; set; }
+    
         public int CategoryID { get; set; }
         public Category Category { get; set; }
         public int WriterID { get; set; }

@@ -16,5 +16,6 @@ namespace BusinessLayer.Abstract
         void DeleteEntity(TEntity entity);
         void UpdateEntity(TEntity entity);
         List<TEntity> GetListEntity();
+        TEntity GetEntityByID(int id);
     }
 }

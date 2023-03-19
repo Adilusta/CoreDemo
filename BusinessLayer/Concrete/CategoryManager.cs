@@ -16,6 +16,14 @@ namespace BusinessLayer.Concrete
         {
             _categoryDal = categoryDal;
         }
+        public Category GetEntityByID(int id)
+        {
+            return _categoryDal.GetEntity(p => p.CategoryID == id);
+        }
+        public List<Category> GetListEntity()
+        {
+            return _categoryDal.GetAll();
+        }
 
         //Kategori ekler
         public void AddEntity(Category entity)
@@ -25,15 +33,6 @@ namespace BusinessLayer.Concrete
         public void DeleteEntity(Category entity)
         {
             _categoryDal.Delete(entity);
-        }
-        public Category GetCategoryByCategoryID(int id)
-        {
-            return _categoryDal.GetEntity(p => p.CategoryID == id);
-        }
-
-        public List<Category> GetListEntity()
-        {
-            return _categoryDal.GetAll();
         }
         public void UpdateEntity(Category entity)
         {

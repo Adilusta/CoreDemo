@@ -17,6 +17,10 @@ namespace BusinessLayer.Concrete
         {
             _blogDal = blogDal;
         }
+        public Blog GetEntityByID(int id)
+        {
+            return _blogDal.GetEntity(p => p.BlogId == id);
+        }
         public List<Blog> GetListEntity()
         {
             return _blogDal.GetAll();
@@ -42,10 +46,6 @@ namespace BusinessLayer.Concrete
           return _blogDal.GetListBlogsWithCategory();
         }
 
-        public Blog GetBlogByBlogID(int id)
-        {
-            return _blogDal.GetEntity(p=>p.BlogId==id);
-        }
 
         public List<Blog> GetBlogsByWriter(int writerID)
         {
@@ -55,6 +55,11 @@ namespace BusinessLayer.Concrete
         public List<Blog> GetLastThreeBlogs()
         {
             return _blogDal.GetAll().TakeLast(3).ToList();
+        }
+
+        public List<Blog> GetListWithCategoryByWriter(int writerID)
+        {
+            return _blogDal.GetListWithCategoryByWriter(writerID);
         }
     }
 }

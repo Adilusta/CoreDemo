@@ -17,12 +17,16 @@ namespace DataAccessLayer.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                context.Remove(entity);
-                context.SaveChanges();
+              
+                    context.Remove(entity);
+                    context.SaveChanges();
+             
+              
+              
             }
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
         {
             using (TContext context = new TContext())
             {

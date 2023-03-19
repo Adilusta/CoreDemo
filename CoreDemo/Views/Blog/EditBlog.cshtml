@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model Blog
+
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Blog düzenleme sayfası </h1>
+
+@using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post)) 
+{
+    @Html.HiddenFor(x => x.BlogId)
+   @* @Html.TextBoxFor(x=> x.BlogId , new {@class= "form-control"})*@
+    @Html.HiddenFor(x => x.BlogStatus)
+    @Html.HiddenFor(x => x.WriterID)
+    @Html.HiddenFor(x => x.CreateDate)
+        <br />
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x=> x.BlogTitle, new {@class="form-control"})
+    
+        <br />
+    @Html.Label("Blog Thumbnail URL")
+    @Html.TextBoxFor(x=>x.BlogThumbnailImage, new{@class="form-control"})
+        <br />
+    @Html.Label("Blog Görseli")
+    @Html.TextBoxFor(x=>x.BlogImage, new{@class="form-control"})
+        <br />
+    @Html.Label("Blog Kategorisi")
+    @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>) ViewBag.categoriesWithDropdownList, new {@class= "form-control"})
+
+        <br />
+    @Html.Label("Blog İçeriği")
+    @Html.TextAreaFor(x=>x.BlogContent,10,3, new{@class="form-control"})
+   <br />
+    <button  class="btn btn-success"> Güncelle </button>
+
+                                               
+    
+   
+  
+   
+
+}
+

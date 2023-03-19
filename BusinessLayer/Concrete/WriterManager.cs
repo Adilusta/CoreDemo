@@ -17,8 +17,16 @@ namespace BusinessLayer.Concrete
 		{
 			_writerDal = writerDal;
 		}
+        public Writer GetEntityByID(int id)
+        {
+            return _writerDal.GetEntity(x => x.WriterID == id);
+        }
+        public List<Writer> GetListEntity()
+        {
+            return _writerDal.GetAll();
+        }
 
-		public void AddEntity(Writer entity)
+        public void AddEntity(Writer entity)
 		{
 			_writerDal.Insert(entity);
 		}
@@ -27,12 +35,6 @@ namespace BusinessLayer.Concrete
 		{
 			_writerDal.Delete(entity);
 		}
-
-		public List<Writer> GetListEntity()
-		{
-		return	_writerDal.GetAll();
-		}
-
 		public void UpdateEntity(Writer entity)
 		{
 			_writerDal.Update(entity); 

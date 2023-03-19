@@ -17,7 +17,16 @@ namespace BusinessLayer.Concrete
 		{
 			_commentDal = commentDal;
 		}
-		public void AddEntity(Comment entity)
+        public Comment GetEntityByID(int id)
+        {
+            return _commentDal.GetEntity(x => x.CommentID == id);
+
+        }
+        public List<Comment> GetListEntity()
+        {
+            return _commentDal.GetAll();
+        }
+        public void AddEntity(Comment entity)
 		{
 			_commentDal.Insert(entity);
 			
@@ -27,17 +36,10 @@ namespace BusinessLayer.Concrete
 		{
 			_commentDal.Delete(entity);
 		}
-
 		public List<Comment> GetListCommentByBlogID(int id)
 		{
 			return _commentDal.GetAll(p=> p.BlogId==id);
 		}
-
-		public List<Comment> GetListEntity()
-		{
-            return _commentDal.GetAll();
-        }
-
 		public void UpdateEntity(Comment entity)
 		{
 			_commentDal.Update(entity);

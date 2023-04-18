@@ -24,6 +24,8 @@ namespace BusinessLayer.ValidationRules.FluentValidation
 
             RuleFor(x => x.BlogThumbnailImage).NotEmpty().WithMessage("Blog görseli boş geçilemez");
             RuleFor(x => x.BlogImage).NotEmpty().WithMessage("Blog küçük görseli boş geçilemez");
+
+        
             
 
             

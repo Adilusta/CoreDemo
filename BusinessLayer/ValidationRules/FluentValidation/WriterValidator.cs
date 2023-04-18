@@ -19,7 +19,7 @@ namespace BusinessLayer.ValidationRules.FluentValidation
             RuleFor(p => p.WriterMail).EmailAddress().WithMessage("Lütfen mail formatında giriniz.");
             //RuleFor(p => p.WriterPassword).Matches(@"[A-Z]+").WithMessage("Sifre en azı bir büyük harf içermelidir.");
 			//RuleFor(p=>p.WriterPassword).Matches("A").WithMessage
-
+		
 
 
         }

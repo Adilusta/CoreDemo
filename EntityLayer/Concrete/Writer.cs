@@ -19,6 +19,8 @@ namespace EntityLayer.Concrete
         public string WriterMail { get; set; }
         [DataType(DataType.Password)]
         public string WriterPassword { get; set; }
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
         public bool WriterStatus { get; set; }
         public List<Blog> Blogs { get; set; }
 

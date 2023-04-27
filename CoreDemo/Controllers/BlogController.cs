@@ -2,6 +2,7 @@
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -14,10 +15,11 @@ using System.Linq;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
+ 
     public class BlogController : Controller
     {
         IBlogService blogManager = new BlogManager(new EfBlogRepository());
+        Context context = new Context();
         public IActionResult Index()
         {
             var result = blogManager.GetBlogsWithCategory();
@@ -31,8 +33,11 @@ namespace CoreDemo.Controllers
         }
         public IActionResult BlogListByWriter()
         {
+            var userMail = User.Identity.Name;
+            var writerID = context.Writers.
+                Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
             //ViewBag.WriterID = writerID;
-            var result = blogManager.GetListWithCategoryByWriter(1);
+            var result = blogManager.GetListWithCategoryByWriter(writerID);
             return View(result);
         }
         
@@ -48,8 +53,11 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {
-            //DropdownList boş kalmasın diye HttpPost'ta da dropdownlist verilerini getiriyoruz.
+          
+            var userMail = User.Identity.Name;
+            var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
 
+            //DropdownList boş kalmasın diye HttpPost'ta da dropdownlist verilerini getiriyoruz.
             var values = ListCategoriesWithDropdownList();
             ViewBag.categoriesWithDropdownList = values;
 
@@ -60,7 +68,7 @@ namespace CoreDemo.Controllers
             {
                 blog.BlogStatus = true;
                 blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                blog.WriterID = 1;
+                blog.WriterID = writerID;
                 blogManager.AddEntity(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -103,6 +111,8 @@ namespace CoreDemo.Controllers
         [HttpGet("/Blog/EditBlog/{blogId}")]
         public IActionResult EditBlog(int blogId)
         {
+
+
             //Kategorileri getirir
             var values = ListCategoriesWithDropdownList();
             ViewBag.categoriesWithDropdownList = values;
@@ -114,14 +124,17 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
+         
+            var userMail = User.Identity.Name;
+            var writerID = context.Writers.
+                Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+
             //DropdownList boş kalmasın diye HttpPost'ta da dropdownlist verilerini getiriyoruz.
             var values = ListCategoriesWithDropdownList();
             ViewBag.categoriesWithDropdownList = values;
 
-            blog.WriterID = 1;
+            blog.WriterID = writerID;
             blog.BlogStatus = true;
-           
-            
 
             blogManager.UpdateEntity(blog);
             return RedirectToAction("BlogListByWriter","Blog");

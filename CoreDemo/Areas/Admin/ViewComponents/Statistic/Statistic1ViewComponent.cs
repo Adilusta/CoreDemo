@@ -20,6 +20,7 @@ namespace CoreDemo.Areas.Admin.ViewComponents.Statistic
             ViewBag.vbCommentCount= context.Comments.Count().ToString();
 
             //api keyimiz
+            //string api = "14ad2aba611dbef9c504b82a127794c5";
             string api = "59c6f3798350a371f0f3894a73256666";
             // api url'imiz
             string connection =

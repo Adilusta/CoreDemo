@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+
+      
+      
+
+
+    <td>
+
+    </td>
+
+
+
+<h1> Yazar Ajax işlemleri</h1>
+   <br />
+
+<button type="button" id="btngetList" class="btn btn-primary"> Yazar Listesi </button>
+<button type="button" id="btngetByID" class="btn btn-success"> Yazar Getir </button>
+<br /> <br />
+
+<div id="writerList">
+    Buraya yazarlar gelecek
+</div>
+<br />
+
+<div id="getWriter">
+    Buraya bir yazar gelecek.
+</div>
+
+<br />
+
+<div >
+    <input  type="text" id="writerID" placeholder="Yazar ID değerini girniz" class="form-control"/>
+</div>
+
+@section scripts{
+   <script>
+     $("#btngetList").click(function() {
+      $.ajax({
+        contentType: "application.json" ,
+        dataType: "json",
+        type: "GET",
+        url: "/Admin/Writer/WriterList/",
+        success: function(func) {
+            let writers=jQuery.parseJSON(func)
+          console.log(writers);
+          let tablehtml="<table class= 'table table-bordered'> <tr> <th>Yazar ID </th> <th>Yazar Adı </th> </tr>";
+          $.each(writers, function(index,value){
+              tablehtml+=`<tr> <td> ${value.ID} </td> <td> ${value.Name} </td> </tr>` 
+          });
+          tablehtml+="</table>";
+          $("#writerList").html(tablehtml);
+        }
+      });
+    });
+
+       $("#btngetByID").click(function(){
+            let id=$("#writerID").val(); //writer id den dönen değeri okur
+            $.ajax({
+                contentType:"application/json",
+                dataType:"json",
+                type:"GET",
+                url:"/Admin/Writer/GetWriterByID/",
+                data:{writerID:id},
+                success:function(func){
+
+                    let writers=jQuery.parseJSON(func);
+                    let getValue=`<table class="table table-bordered">  <tr><th>Yazar ID</th><th>Yazar Adı</th> </tr>  <tr> <td> ${writers.ID}</td> <td> ${writers.Name}</td>  </tr </table>`;
+                    $("#getWriter").html(getValue);
+                     console.log(writers);
+                }
+            });
+           
+       });
+
+
+    //$("#btngetByID").click(x=>{
+    //    let id=$("#writerID").val(); //writer id den dönen değeri okur
+    //    console.log(id);
+    //});
+  </script>
+}
+
+
+

@@ -1,3 +1,5 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +29,16 @@ namespace CoreDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>(x =>
+            {
+
+                //identity kütüphanesinden default olarak gelen zorunluluklarý kaldýrýyorum.
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+
+            }).AddEntityFrameworkStores<Context>();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             //services.AddSession();  ihtiyacýmýz yok artýk buna
 
@@ -40,15 +52,29 @@ namespace CoreDemo
 
             //Yetkisiz bir giriþ yapýlmaya çalýþdýðýnda hangi sayfaya yönlendireceðini belirtir.
             services.AddMvc();
-            services.AddAuthentication
-                (CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(x =>
-                {
-                    x.LoginPath = "/Login/Index";
+
+            //IDENTITY KÜTÜPHANESÝNDEN ÖNCE BU ÇALIÞIYORDU 
+            //services.AddAuthentication
+            //    (CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(x =>
+            //    {
+            //        x.LoginPath = "/Login/Index";
+            //    }
+            //    );
+
+            //IDENTITY KÜTÜPHANESÝNDEN SONRA BUNU YAZMAN GEREK
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(options =>
+            {
+               options.LoginPath = "/Login/Index";
+            });
 
 
-                }
-                );
 
         }
 
@@ -70,18 +96,18 @@ namespace CoreDemo
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
-            //app.UseSession(); ihtiyacýmýz yok artýk
-
             app.UseRouting();
+            //app.UseSession(); ihtiyacýmýz yok artýk
 
             app.UseAuthorization();
 
+
+
             app.UseEndpoints(endpoints =>
             {
-               endpoints.MapControllerRoute(
-                 name: "areas",
-                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 
 

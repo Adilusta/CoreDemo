@@ -20,11 +20,15 @@ namespace CoreDemo.Controllers
     {
         IBlogService blogManager = new BlogManager(new EfBlogRepository());
         Context context = new Context();
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var result = blogManager.GetBlogsWithCategory();
             return View(result);
         }
+
+        [AllowAnonymous]
         public IActionResult BlogDetails(int id)
         {
             ViewBag.BlogID = id;

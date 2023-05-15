@@ -1,31 +1,24 @@
 ﻿
-
+@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
 @*<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-	@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
-
-
-
 	<div class="tech-btm">
 		<form method="post">
 			<input  type="email" id="txtmail" name="Mail" class="tech-btm" required="" />
 			<input  type="submit" id="btnSubscribe" value="Abone Ol" />
 		</form>
 	</div>
-
 	<script type="text/javascript">
 		$("#btnSubscribe").click(function(){
 			let values= {
 				Mail:$("#txtmail").val() //Mail = veritabanındaki değerimiz.
 			};
-
 			$.ajax({
 				type:"post",
 				url:"/NewsLetter/SubscribeMail/",
 				data:values,
 				success:function(func){
 					let result=jQuery.parseJSON(func);
-
 				}
 			});
 		}); 

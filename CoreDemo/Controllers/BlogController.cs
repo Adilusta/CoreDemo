@@ -4,6 +4,7 @@ using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DocumentFormat.OpenXml.Bibliography;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -24,6 +25,7 @@ namespace CoreDemo.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+
             var result = blogManager.GetBlogsWithCategory();
             return View(result);
         }
@@ -97,7 +99,6 @@ namespace CoreDemo.Controllers
         }
         public List<SelectListItem> ListCategoriesWithDropdownList()
         {
-           
             CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
             List<SelectListItem> categoryvalues = (from x in categoryManager.GetListEntity()
                                                    select new SelectListItem
@@ -105,8 +106,6 @@ namespace CoreDemo.Controllers
                                                        
                                                        Text = x.CategoryName,
                                                        Value = x.CategoryID.ToString(),
-                                                      
-                                                       
 
                                                    }).ToList();
             return (categoryvalues);

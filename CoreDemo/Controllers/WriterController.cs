@@ -6,19 +6,30 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Update;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
    
     public class WriterController : Controller
     {
-        WriterManager writerManager = new WriterManager(new EfWriterRepository());
         Context context = new Context();
+        WriterManager writerManager = new WriterManager(new EfWriterRepository());
+        
+
+        private readonly UserManager<AppUser> _userManager;
+
+        public WriterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [Authorize]
         public IActionResult Index()
         {
@@ -54,13 +65,19 @@ namespace CoreDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult WriterEditProfile()
+        public  IActionResult WriterEditProfile()
         {
-            var userMail= User.Identity.Name;
-            var writerID= context.Writers.
-                Where(x=>x.WriterMail==userMail).Select(y => y.WriterID).FirstOrDefault();
-            var writerValues = writerManager.GetEntityByID(writerID);
-            return View(writerValues);
+            UserManager userManager = new UserManager(new EfUserRepository());
+            var userName= User.Identity.Name;
+            var userMail = context.Users.Where(x=>x.UserName==userName).Select(y=>y.Email).FirstOrDefault();
+            //var writerID= context.Writers.
+            //    Where(x=>x.WriterMail==userMail).Select(y => y.WriterID).FirstOrDefault();
+            //var writerValues = writerManager.GetEntityByID(writerID);
+            //return View(writerValues);
+        
+            var id = context.Users.Where(x=>x.Email==userMail).Select(y=>y.Id).FirstOrDefault();
+            var values= userManager.GetEntityByID(id);
+            return View(values);
         }
 
         [HttpPost]

@@ -53,26 +53,26 @@ namespace CoreDemo
             //Yetkisiz bir giriþ yapýlmaya çalýþdýðýnda hangi sayfaya yönlendireceðini belirtir.
             services.AddMvc();
 
-            //IDENTITY KÜTÜPHANESÝNDEN ÖNCE BU ÇALIÞIYORDU 
-            //services.AddAuthentication
-            //    (CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(x =>
-            //    {
-            //        x.LoginPath = "/Login/Index";
-            //    }
-            //    );
+            //IDENTITY KÜTÜPHANESÝNDEN ÖNCE BU ÇALIÞIYORDU
+            services.AddAuthentication
+                (CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(x =>
+                {
+                    x.LoginPath = "/Login/Index";
+                }
+                );
 
             //IDENTITY KÜTÜPHANESÝNDEN SONRA BUNU YAZMAN GEREK
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-            .AddCookie(options =>
-            {
-               options.LoginPath = "/Login/Index";
-            });
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //})
+            //.AddCookie(options =>
+            //{
+            //   options.LoginPath = "/Login/Index";
+            //});
 
 
 

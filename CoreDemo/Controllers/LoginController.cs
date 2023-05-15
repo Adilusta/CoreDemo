@@ -75,20 +75,20 @@ namespace CoreDemo.Controllers
             }*/
 
 
-        //SESSION İLE GİRİŞ YAPMA
+    //    SESSION İLE GİRİŞ YAPMA
 
-        //Context context = new Context();
-        //var dataValue = context.Writers.FirstOrDefault(x=>x.WriterMail==writer.WriterMail
-        //&& x.WriterPassword==writer.WriterPassword);
-        //if (dataValue!=null)
-        //{
-        //	HttpContext.Session.SetString("username",writer.WriterMail);
-        //	return RedirectToAction("Index","Writer");
-        //}
-        //else
-        //{
-        //return View();
-        // }
+    //    Context context = new Context();
+    //    var dataValue = context.Writers.FirstOrDefault(x => x.WriterMail == writer.WriterMail
+    //    && x.WriterPassword == writer.WriterPassword);
+    //    if (dataValue!=null)
+    //    {
+        	//HttpContext.Session.SetString("username",writer.WriterMail);
+    //    	return RedirectToAction("Index","Writer");
+    //}
+    //    else
+    //    {
+    //    return View();
+//}
 
     }
 }

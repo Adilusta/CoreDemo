@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public void UpdateEntity(AppUser entity)
         {
-            throw new NotImplementedException();
+            _userDal.Update(entity);
         }
     }
 }

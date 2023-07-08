@@ -101,7 +101,8 @@ namespace CoreDemo.Controllers
             values.NameSurname = model.namesurname;
             values.Email = model.mail;
             values.ImageUrl = model.imageurl;
-            var result = await _userManager.UpdateAsync(values);
+            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values,model.password);
+            var result = await _userManager.UpdateAsync (values);
             return RedirectToAction("Index", "Dashboard");
             //WriterValidator writerValidator = new WriterValidator();
 

@@ -20,12 +20,12 @@ namespace BusinessLayer.Concrete
 
         public void AddEntity(Message2 entity)
         {
-            throw new NotImplementedException();
+            _message2Dal.Insert(entity);
         }
 
         public void DeleteEntity(Message2 entity)
         {
-            throw new NotImplementedException();
+            _message2Dal.Delete(entity);
         }
 
         public Message2 GetEntityByID(int id)
@@ -35,7 +35,11 @@ namespace BusinessLayer.Concrete
 
         public List<Message2> GetInboxListByWriter(int id)
         {
-            return _message2Dal.GetListWithMessageByWriter(id);
+            return _message2Dal.GetInboxWithMessageByWriter(id);
+        }
+       public List<Message2> GetSendBoxWithByWriter(int id)
+        {
+            return _message2Dal.GetSendBoxWithByWriter (id);
         }
 
         public List<Message2> GetListEntity()
@@ -45,7 +49,7 @@ namespace BusinessLayer.Concrete
 
         public void UpdateEntity(Message2 entity)
         {
-            throw new NotImplementedException();
+            _message2Dal.Update(entity);
         }
     }
 }

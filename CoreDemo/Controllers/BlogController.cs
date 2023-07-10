@@ -39,9 +39,15 @@ namespace CoreDemo.Controllers
         }
         public IActionResult BlogListByWriter()
         {
-            var userMail = User.Identity.Name;
-            var writerID = context.Writers.
-                Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            //var userMail = User.Identity.Name;
+            var userName=User.Identity.Name;
+
+
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
+            var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            ViewBag.WriterID = writerID;
+            //var writerID = context.Writers.
+            //    Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
             //ViewBag.WriterID = writerID;
             var result = blogManager.GetListWithCategoryByWriter(writerID);
             return View(result);
@@ -59,8 +65,11 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {
-          
-            var userMail = User.Identity.Name;
+
+            var userName = User.Identity.Name;
+
+
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
 
             //DropdownList boş kalmasın diye HttpPost'ta da dropdownlist verilerini getiriyoruz.
@@ -127,10 +136,11 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
-         
-            var userMail = User.Identity.Name;
-            var writerID = context.Writers.
-                Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+
+
+            var userName = User.Identity.Name;
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
+            var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
 
             //DropdownList boş kalmasın diye HttpPost'ta da dropdownlist verilerini getiriyoruz.
             var values = ListCategoriesWithDropdownList();

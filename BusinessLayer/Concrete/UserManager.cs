@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public List<AppUser> GetListEntity()
         {
-            throw new NotImplementedException();
+            return _userDal.GetAll();
         }
 
         public void UpdateEntity(AppUser entity)

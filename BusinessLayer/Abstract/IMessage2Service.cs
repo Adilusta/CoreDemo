@@ -10,6 +10,8 @@ namespace BusinessLayer.Abstract
     public interface IMessage2Service : IService<Message2>
     {
         List<Message2> GetInboxListByWriter(int id);
+        List<Message2> GetSendBoxWithByWriter(int id);
+        
 
     }
 }

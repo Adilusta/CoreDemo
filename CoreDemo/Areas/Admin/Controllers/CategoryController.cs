@@ -56,6 +56,19 @@ namespace CoreDemo.Areas.Admin.Controllers
             categoryManager.DeleteEntity(category);
             return RedirectToAction("Index");
         }
+
+        [HttpGet("/Admin/Category/EditCategory/{categoryID}")]
+        public IActionResult EditCategory(int categoryID)
+        {
+            var category= categoryManager.GetEntityByID(categoryID);
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult EditCategory(Category category)
+        {
+            categoryManager.UpdateEntity(category);
+            return RedirectToAction("Index");
+        }
     }
 
 }

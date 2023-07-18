@@ -1,0 +1,23 @@
+﻿@using EntityLayer.Concrete
+@model Category
+
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditCategory","Category",FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.CategoryID)
+    @Html.HiddenFor(x => x.CategoryStatus)
+
+    @Html.Label("Kategori Adı")
+    <br />
+    @Html.TextBoxFor(x=>x.CategoryName,new{@class ="form-control"})
+    <br />
+    @Html.Label("Mesajınız")
+    @Html.TextBoxFor(x=>x.CategoryDescription ,new{@class ="form-control"})
+    <br />
+    <button class="btn btn-info" style= "font-size:medium;"> Değişiklikleri Onayla</button>
+}
+

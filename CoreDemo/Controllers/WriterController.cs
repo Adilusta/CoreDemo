@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Update;
 using System;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
@@ -22,7 +23,7 @@ namespace CoreDemo.Controllers
     {
         Context context = new Context();
         WriterManager writerManager = new WriterManager(new EfWriterRepository());
-
+        
 
         private readonly UserManager<AppUser> _userManager;
 
@@ -34,6 +35,7 @@ namespace CoreDemo.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            ViewBag.adilll = "sdassad";
             var usermail = User.Identity.Name;
             ViewBag.v = usermail;
 
@@ -58,12 +60,25 @@ namespace CoreDemo.Controllers
         }
         public PartialViewResult WriterNavbarPartial()
         {
+            
             return PartialView();
         }
         public PartialViewResult WriterFooterPartial()
         {
             return PartialView();
         }
+
+        //public PartialViewResult WriterHeaderPartial()
+        //{
+        //    //ViewBag.denemee = "sdassad";
+        //    //return PartialView("~/Views/Writer/WriterHeaderPartial.cshtml");
+        //}
+        public IActionResult GetNameSurname()
+        {
+            ViewBag.adilll = "sdassad";
+            return PartialView("~/Views/Writer/WriterHeaderPartial.cshtml");
+        }
+        
 
         [HttpGet]
         public async Task<IActionResult> WriterEditProfile()

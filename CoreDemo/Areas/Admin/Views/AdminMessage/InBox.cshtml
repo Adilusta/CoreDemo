@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model List<Message2>
+
+
+@{
+    ViewData["Title"] = "InBox";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+        <div class="wrapper wrapper-content">
+        <div class="row">
+            @await Html.PartialAsync("AdminMailboxSidebarPartial")
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+
+                <form method="get" action="index.html" class="float-right mail-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="search" placeholder="Mail Aramak için giriniz.">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-sm btn-primary">
+                              Ara
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <h2>
+                    Gelen Kutusu(@Model.Count())
+                </h2>
+               @await Html.PartialAsync("AdminMailToolbarPartial")
+            </div>
+                <div class="mail-box">
+
+                <table class="table table-hover table-mail">
+                <tbody>
+
+                    @foreach (var item in Model)
+                      {
+                         <tr class="unread">
+                            <td class="check-mail">
+                                <input type="checkbox" class="i-checks">
+                            </td>
+                            <td class="mail-ontact"><a href="mail_detail.html">@item.SenderUser.WriterName</a></td>
+                            <td class="mail-subject"><a href="mail_detail.html">@item.Subject</a></td>
+                          
+                            <td class="text-right mail-date">@item.MessageDate.ToShortDateString()</td>
+                         </tr>  
+                      }
+                </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+
+</html>
+
+
+
+
+
+

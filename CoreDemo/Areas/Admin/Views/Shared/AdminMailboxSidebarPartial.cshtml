@@ -1,4 +1,10 @@
 ﻿
+@using EntityLayer.Concrete
+@{
+    // ViewBag'den verileri alın
+    //var messageCount =(int) ViewBag.MessageCount;
+    var messageCount = ViewBag.MessageCount;
+}
 
 <div class="col-lg-3">
                 <div class="ibox ">
@@ -7,15 +13,8 @@
                             <a  class="btn btn-block btn-primary compose-mail" href="/Admin/AdminMessage/ComposeMessage/">Mesaj Oluştur</a>
                             <div class="space-25"></div>
                             <h5>Klasörler</h5>
-                            <ul class="folder-list m-b-md" style="padding: 0">
-                                <li><a href="/Admin/AdminMessage/InBox/"> <i class="fa fa-inbox "></i> Gelen Mesajlar
-                                    <span class="label label-warning float-right">16</span> </a></li>
-                                <li><a href="/Admin/AdminMessage/SendBox/"> <i class="fa fa-envelope-o"></i> Giden Mesajlar</a></li>
-                                <li><a href="mailbox.html"> <i class="fa fa-certificate"></i> Önemli Mesajlar</a></li>
-                                <li><a href="mailbox.html"> <i class="fa fa-file-text-o"></i> Taslaklar
-                                    <span class="label label-danger float-right">2</span></a></li>
-                                <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Çöp Kutusu</a></li>
-                            </ul>
+                         
+                      @await Component.InvokeAsync("AdminMailBox")
                             <h5>Kategoriler</h5>
                             <ul class="category-list" style="padding: 0">
                                 <li><a href="#"> <i class="fa fa-circle text-navy"></i> İş </a></li>

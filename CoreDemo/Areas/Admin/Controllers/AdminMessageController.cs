@@ -71,8 +71,6 @@ namespace CoreDemo.Areas.Admin.Controllers
             message.MessageDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             message.MessageStatus = true;
             message2Manager.AddEntity(message);
-
-
             return RedirectToAction("SendBox");
         }
 

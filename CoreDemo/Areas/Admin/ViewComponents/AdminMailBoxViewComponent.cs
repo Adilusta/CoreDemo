@@ -29,7 +29,7 @@ namespace CoreDemo.Areas.Admin.ViewComponents
             var viewModel = new AdminMailBoxViewModel()
             {
                 IncomingMessageCount = incomingMessagesCount,
-                OutgoingMessageCount =outGoingMessagesCount
+                OutgoingMessageCount = outGoingMessagesCount
             };
             return View(viewModel);
         }

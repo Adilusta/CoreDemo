@@ -11,6 +11,7 @@ namespace DataAccessLayer.Concrete
 {
     public class Context : IdentityDbContext<AppUser,AppRole,int>
     {
+       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-5CVFMQ5\\SQLEXPRESS;database=CoreBlogDb; integrated security=true;");

@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model Comment
+@{
+    ViewData["Title"] = "EditComment";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditComment", "AdminComment", FormMethod.Post)) 
+{
+    @Html.HiddenFor(x => x.CommentID)
+    @Html.HiddenFor(x => x.CommentStatus)
+    @Html.HiddenFor(x => x.Blog.BlogId)
+    @Html.HiddenFor(x=>x.Blog.WriterID)
+    @Html.HiddenFor(x=>x.Blog.CategoryID)
+
+        <br />
+    @Html.Label("Kullanıcı")
+    @Html.TextBoxFor(x=> x.CommentUserName, new {@class="form-control"})
+    
+        <br />
+    @Html.Label(" Başlık")
+    @Html.TextBoxFor(x=>x.CommentTitle, new{@class="form-control"})
+        <br />
+    @Html.Label("Yorum")
+    @Html.TextAreaFor(x=>x.CommentContent,10,3, new{@class="form-control"})
+        <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x=>x.CommentDate, new{@class="form-control"})
+    @Html.Label("Blog Adı")
+    @Html.TextBoxFor(x=>x.Blog.BlogTitle, new{@class="form-control"})
+  
+   <br />
+    <button class="btn btn-success"> Güncelle </button>
+
+}
+

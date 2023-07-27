@@ -45,5 +45,15 @@ namespace BusinessLayer.Concrete
 			_commentDal.Update(entity);
 			
 		}
-	}
+
+        public List<Comment> GetListCommentWithBlog()
+        {
+           return _commentDal.GetCommentListWithBlog();
+        }
+
+        public Comment GetCommentWithBlogByCommentID(int id)
+        {
+			return _commentDal.GetCommentWithBlogByCommentID(id);
+        }
+    }
 }

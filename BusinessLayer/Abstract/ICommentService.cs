@@ -9,7 +9,9 @@ namespace BusinessLayer.Abstract
 {
 	public interface ICommentService : IService<Comment>
 	{
-		List<Comment> GetListCommentByBlogID(int id);	
+		List<Comment> GetListCommentByBlogID(int id);
+		List<Comment> GetListCommentWithBlog();
+		Comment GetCommentWithBlogByCommentID(int id);
 	}
 
 }

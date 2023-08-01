@@ -71,7 +71,6 @@ namespace CoreDemo
                 opts.LoginPath = "/Login/Index/";
                 opts.SlidingExpiration = true;
             });
-
             //IDENTITY KÜTÜPHANESÝNDEN SONRA BUNU YAZMAN GEREK
             //services.AddAuthentication(options =>
             //{
@@ -83,9 +82,6 @@ namespace CoreDemo
             //{
             //    options.LoginPath = "/Login/Index";
             //});
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

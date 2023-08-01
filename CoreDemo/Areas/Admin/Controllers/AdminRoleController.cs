@@ -1,5 +1,6 @@
 ﻿using CoreDemo.Areas.Admin.Models;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace CoreDemo.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Moderator")] // sadece admin rolüne sahip kişiler erişebilir
     public class AdminRoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager; //rol içerisine alacağımız entity
@@ -130,16 +132,24 @@ namespace CoreDemo.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AssignRole(List<RoleAssignViewModel> model)
         {
+            //kullanıcıyı buluyoruz
             var userid = (int)TempData["UserId"];
             var user = _userManager.Users.FirstOrDefault(x => x.Id == userid);
+            //view den gönderilen modeli kontrol ediyoruz checkbox tıklanmış mı diye
             foreach (var item in model)
             {
                 if (item.Exist)
                 {
+                    //tıklandıysa kullanıcıya o rolü ekliyoruz.
                     await _userManager.AddToRoleAsync(user, item.Name);
                 }
+                else 
+                {
+                    //checbkox tıklı değilse rolü kaldırıyoruz o kullanıcıdan.
+                    await _userManager.RemoveFromRoleAsync(user, item.Name);
+                }
             }
-            return View();
+            return RedirectToAction("UserRoleList");
         }
     }
 }

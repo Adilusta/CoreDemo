@@ -62,7 +62,7 @@ namespace Jwt_core_proje_kampi
             }
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

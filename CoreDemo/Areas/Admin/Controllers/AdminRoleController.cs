@@ -2,6 +2,7 @@
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,11 +12,15 @@ namespace CoreDemo.Areas.Admin.Controllers
     public class AdminRoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager; //rol içerisine alacağımız entity
-        public AdminRoleController(RoleManager<AppRole> roleManager)
-        {
-            _roleManager = roleManager;
-        }
-        public IActionResult Index()
+        private readonly UserManager<AppUser> _userManager;
+
+		public AdminRoleController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager)
+		{
+			_roleManager = roleManager;
+			_userManager = userManager;
+		}
+
+		public IActionResult Index()
         {
 
             //rolleri listeleme
@@ -85,6 +90,54 @@ namespace CoreDemo.Areas.Admin.Controllers
             if (result.Succeeded)
             {
                 return RedirectToAction("Index");
+            }
+            return View();
+        }
+        
+        public IActionResult UserRoleList()
+        {
+            var values = _userManager.Users.ToList();
+
+            return View(values);
+        }
+      
+        [HttpGet]
+        public async Task <IActionResult> AssignRole(int id)
+        {
+            //id ye göre kullanıcıyı buluyoruz.
+            var user = _userManager.Users.FirstOrDefault(x=> x.Id==id);
+            //rolleri listeliyoruz
+            var roles = _roleManager.Roles.ToList();
+            TempData["UserId"] = user.Id;
+            //Parametre olarak verdiğimiz kullanıcının rollerini getiriyor.
+            var userRoles = await _userManager.GetRolesAsync(user);
+            List<RoleAssignViewModel> model = new List<RoleAssignViewModel>();
+            foreach (var item in roles)
+            {
+                RoleAssignViewModel m = new RoleAssignViewModel
+                {
+                    //id ve name
+                    RoleID = item.Id,
+                    Name = item.Name,
+                    //Foreach ile rolleri dönüp hangi rolün, kullanıcının rolleri oldugunu tespit ediyoruz.
+                    Exist = userRoles.Contains(item.Name)
+                };
+                model.Add(m);
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AssignRole(List<RoleAssignViewModel> model)
+        {
+            var userid = (int)TempData["UserId"];
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == userid);
+            foreach (var item in model)
+            {
+                if (item.Exist)
+                {
+                    await _userManager.AddToRoleAsync(user, item.Name);
+                }
             }
             return View();
         }

@@ -1,10 +1,17 @@
 ﻿
 @using EntityLayer.Concrete
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Mvc;
 @model Blog
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<AppUser> usermanager;
 
 
 @{
     ViewData["Title"] = "BlogDetails";
+    //ViewData["BlogId"] = Model.BlogId;
+
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 <!--
@@ -52,16 +59,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul>
 									<li>
 										<a href="#">
-											<i class="far fa-calendar-alt"></i>@(((DateTime)Model.CreateDate).ToString("dd-MMM-yyyy"))</a>
+											Tarih:
+											<i class="far fa-calendar-alt"> </i>@(((DateTime)Model.CreateDate).ToString("dd-MMM-yyyy"))</a>
 									</li>
-									<li class="mx-2">
+									@*<li class="mx-2">
 										<a href="#">
 											<i class="far fa-thumbs-up"></i> 201 Likes</a>
 									</li>
 									<li>
 										<a href="#">
 											<i class="far fa-comment"></i> 15 Comments</a>
-									</li>
+									</li>*@
 									
 								</ul>
 							</div>
@@ -76,7 +84,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 			
-					@await Component.InvokeAsync("CommentListByBlog",new {id= @ViewBag.BlogID} )
+					@*@await Component.InvokeAsync("CommentListByBlog",new {id= @ViewBag.BlogID} )*@
+					@await Component.InvokeAsync("CommentListByBlog",new {id= @Model.BlogId} )
 					
 					
 					</div>
@@ -94,31 +103,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						@await Component.InvokeAsync("CategoryList")
 
-						@await Component.InvokeAsync("LastThreeBlogByWriter")
-						<div class="single-gd my-5 tech-btm">
-							<h4>Our Progress</h4>
-							<div class="progress">
-								<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
-								    aria-valuemax="100"></div>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-								    aria-valuemax="100"></div>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-								    aria-valuemax="100"></div>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-								    aria-valuemax="100"></div>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-								    aria-valuemax="100"></div>
-							</div>
-						</div>
-						<div class="single-gd tech-btm">
+						@if (User.Identity.IsAuthenticated)
+						{
+								@await Component.InvokeAsync("LastThreeBlogByWriter")
+						}
+					
+						
+						@*<div class="single-gd tech-btm">
 							<h4>En Son Eklenen Yazı</h4>
 							<div class="blog-grids">
 								<div class="blog-grid-left">
@@ -134,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="clearfix"> </div>
 							</div>
-						</div>
+						</div>*@
 					</div>
 
 				</aside>
@@ -143,10 +134,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</section>
 	<!--//main-->
-
-	
-	
 </body>
-
 </html>
-

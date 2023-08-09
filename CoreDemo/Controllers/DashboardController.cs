@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace CoreDemo.Controllers
 {
-
     public class DashboardController : Controller
     {
         public IActionResult Index()

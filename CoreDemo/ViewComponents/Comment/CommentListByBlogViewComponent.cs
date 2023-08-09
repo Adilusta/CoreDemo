@@ -12,6 +12,8 @@ namespace CoreDemo.ViewComponents.Comment
         ICommentService _commentManager = new CommentManager(new EfCommentRepository());
         public IViewComponentResult Invoke(int id)
         {
+            //ViewData["BlogId"]=id;
+            ViewBag.BlogId = id;
             var commentValues = _commentManager.GetListCommentByBlogID(id);
             return View(commentValues);
         }

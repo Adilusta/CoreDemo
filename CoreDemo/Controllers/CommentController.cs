@@ -14,26 +14,20 @@ namespace CoreDemo.Controllers
 		{
 			return View();
 		}
-        [HttpGet]
-        public IActionResult PartialAddComment()
-        {
-            return View();
-        }
-
-        [HttpPost]
-		public IActionResult PartialAddComment(Comment comment)
+		[HttpGet]
+		public IActionResult PartialAddComment()
+		{
+			return View();
+		}
+		[HttpPost("/Comment/PartialAddComment")]
+		public IActionResult PartialAddComment(Comment comment,int id=6)
 		{
 			comment.CommentDate = DateTime.Now;
 			//comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
 			comment.CommentStatus = true;
-			comment.BlogId = 4; 
+			comment.BlogId = id;
 			_commentManager.AddEntity(comment);
-
-            return RedirectToAction("Index","Blog");
+			return RedirectToAction("Index", "Blog");
 		}
-		
-
-
-
-    }
+	}
 }

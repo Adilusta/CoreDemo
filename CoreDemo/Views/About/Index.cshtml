@@ -10,7 +10,9 @@
 
 <!DOCTYPE html>
 <html lang="zxx">
-
+<head>
+	<title>Hakkımızda</title>
+</head>
 <body>
 	<!--/main-->
 	<section class="main-content-w3layouts-agileits">
@@ -35,7 +37,6 @@
 							@item.AboutDetails1
 						</p>
 						}
-						<a href="single.html" class="btn btn-primary read-m">Read More</a>
 					</div>
 					
 				</div>
@@ -49,8 +50,11 @@
 						@await Html.PartialAsync("~/Views/About/SocialMediaAbout.cshtml")
 					
 						<div class="tech-btm">
-							<h4>Son Gönderiler</h4>
-							@await Component.InvokeAsync("LastThreeBlogByWriter")
+								@if (User.Identity.IsAuthenticated)
+						{
+								@await Component.InvokeAsync("LastThreeBlogByWriter")
+						}
+							
 						</div>
 					</div>
 

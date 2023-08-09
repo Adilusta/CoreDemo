@@ -1,14 +1,17 @@
 ﻿@using EntityLayer.Concrete
 @using X.PagedList
 @using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
 @model IPagedList<Category>
 
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
-<h1>Index</h1>
+@*<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>*@
+<h1>Kategoriler</h1>
 <br />
 
 <table class="table table-bordered">
@@ -37,7 +40,14 @@
 				</tr>
 		}
 	</tbody>
+
 </table>
+
+
+	@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{page}),new PagedListRenderOptions{
+	LiElementClasses= new string[]{"page-item"},
+	PageClasses= new string[]{"page-link"}
+	})
+
 <a href="/Admin/Category/AddCategory/" class="btn btn-primary">Yeni kategori </a>
 <br /><br />
-@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{page}))

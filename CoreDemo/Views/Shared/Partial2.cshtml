@@ -1,13 +1,24 @@
 ﻿ 
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Mvc;
+
 <div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
-                    <span>Hoşgeldin _kullaniciAdi!</span>
-                    <span class="mx-lg-4 mx-md-2  mx-1">
+
+     @if (User.Identity.IsAuthenticated)
+    {
+            <span>Hoşgeldin @User.Identity.Name.ToUpper()</span>
+    }
+
+                    @if (!(User.Identity.IsAuthenticated))
+    {
+               <span class="mx-lg-4 mx-md-2  mx-1">
                         <a href="~/Login/Index">
-                            <i class="fas fa-lock"></i> Giriş Yap</a>
+                        <i class="fas fa-lock"></i> Giriş Yap</a>
                     </span>
                     <span>
-                        
                         <a  href="~/RegisterUser/Index/">
-                            <i class="far fa-user"></i> Kayıt Ol</a>
+                        <i class="far fa-user"></i> Kayıt Ol</a>
                     </span>
-                </div>
+    }
+                 
+</div>

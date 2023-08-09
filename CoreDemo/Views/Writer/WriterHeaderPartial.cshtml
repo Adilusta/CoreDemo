@@ -4,9 +4,9 @@
 
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" >
 @*         <a class="navbar-brand brand-logo" href="~/writertema/index.html" > <img src="~/writertema/assets/images/Logonew.png" alt="logo~/writertema/" /> </a>
-*@         <a href="~/writertema/index.html"> <img src="~/writertema/assets/images/NewBloginLogo.jpg"; style="float:left" width="132" height="60" alt="logo~/writertema/" /> </a>
+*@         <a href="/Dashboard/Index/"> <img src="~/writertema/assets/images/NewBloginLogo.jpg"; style="float:left" width="132" height="60" alt="logo~/writertema/" /> </a>
 
-       <a class="navbar-brand brand-logo-mini" href="~/writertema/index.html"><img src="~/writertema/assets/images/NewBloginLogo.jpg" alt="logo~/writertema" /> </a>
+       <a class="navbar-brand brand-logo-mini" href="/Dashboard/Index/"><img src="~/writertema/assets/images/NewBloginLogo.jpg" alt="logo~/writertema" /> </a>
        </div>
 
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -62,7 +62,7 @@
                         @await Component.InvokeAsync("WriterNotification")
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/Login/LogOut/">
                 <i class="mdi mdi-power"></i>
               </a>
             </li>

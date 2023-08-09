@@ -7,12 +7,17 @@
 *@
 
 	<div class="tech-btm">
+	
 							<h4>Yazarın Diğer Yazıları</h4>
-							@foreach (var item in Model.TakeLast(3))
+								@if (Model.Count()==0)
+									{
+										<p class="ml-2">@ViewBag.message</p>
+										<a href="/Blog/BlogAdd/" class="btn btn-success mt-2">
+											Blog Yaz
+										</a>
+									}
+							@foreach (var item in Model.Take(3))
 						   {
-							   
-						
-
 							<div class="blog-grids row mb-3">
 								<div class="col-md-5 blog-grid-left">
 										<a href="~/Blog/BlogDetails/@item.BlogId">
@@ -49,5 +54,5 @@
 
 							</div>*@
 							   }
-						</div>
+	</div>
 

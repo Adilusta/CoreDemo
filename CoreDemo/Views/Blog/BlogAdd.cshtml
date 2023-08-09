@@ -27,15 +27,11 @@
     @Html.Label("Blog Kategorisi")
     @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.categoriesWithDropdownList,
                                                 new {@class= "form-control"})
-
          <br />
     @Html.Label("Blog İçeriği")
     @Html.TextAreaFor(x=>x.BlogContent,15,3 ,new{@class ="form-control"})
     @Html.ValidationMessageFor(x=>x.BlogContent)
     <br />
     <button class="btn btn-info" style= "font-size:medium;"> Bloğu Yayınla</button>
-
-
-
 }
 

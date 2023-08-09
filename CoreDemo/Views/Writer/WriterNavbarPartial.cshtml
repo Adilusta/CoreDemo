@@ -1,4 +1,4 @@
-﻿   
+﻿  
 
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,13 +8,13 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="~/WriterTema/assets/images/faces/face1.jpg" alt="profile">
+                  <img src="~/CoreBlogTema/images/myProfilePhoto.jpeg" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Yazar Adı Soyadı</span>
-                  <span class="text-secondary text-small">Yazılım Mühendisi</span>
+                  <span class="font-weight-bold mb-2">@User.Identity.Name</span>
+@*                  <span class="text-secondary text-small">Yazılım Mühendisi</span>*@
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>

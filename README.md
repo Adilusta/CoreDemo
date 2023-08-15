@@ -146,7 +146,7 @@ Buradan tüm yorumları görebilir,silebilir veya düzenleyebiliriz.
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/219ad1e4-cae6-42c9-bf75-708ac7fe3020)
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/47632ba9-c611-4963-b392-8d279ba76a2b)
 
-### e-) Roller <br/>
+### g-) Roller <br/>
 Bu kısımdan rolleri görüp, yeni rol ekleyip silebiliriz ayrıca hangi kullanıcıya hangi rolü atayacağımızı seçebiliriz.
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/a6965c35-1baa-4fbb-b8d2-5be17b61c785)
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/e2e47434-56ff-47d4-8bb6-4223f3548143)
@@ -155,7 +155,7 @@ Bu kısımdan rolleri görüp, yeni rol ekleyip silebiliriz ayrıca hangi kullan
 Rol Ata kısmına basıp bu şekilde kullanıcının rollerini güncelleyebiliriz.<br/>
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/84fa4202-624a-4679-a177-a19f2de9ae98)
 
-### f-) Blog Raporu İndirme <br/>
+### h-) Blog Raporu İndirme <br/>
 Bu butona tıklayarak blogları excel dosyası olarak indirebilirsiniz. <br/>
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/3827fbc3-9177-43ff-aa35-9c6b8b753717) <br/>
 Bu şekilde excel tablosu olarak indirip inceleyebilirsiniz. <br/>

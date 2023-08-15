@@ -106,4 +106,58 @@ Bildirimleri burdan okuyabilirsiniz.
 ### LAYOUT <br/>
 Header kısmı : Burda mesaj bildirimleri ve genel bildirimlere bakabilir ve çıkış yap butonuna tıklayarak oturumu kapatabilirsiniz.
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/abea16c4-9af4-4be9-b8a4-ddf5effc0a02)
+<br/>
+Navbar kısmı: <br/>
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/79255804-a9da-437e-a39b-a7258ce4db18)
+
+### a-) Dashboard <br/>
+Bu kısımda weather api  ile İstanbul'un anlık hava durumu güncel olarak çekiliyor. Linq sorguları ile toplam blog sayısı,toplam yorum sayısı,son eklenen blog gibi bilgiler çekilmektedir. Bunun dışında iletişim bilgileri ve diğer bilgiler de yer almaktadır. 
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/ae28e6a3-f616-45e8-852d-50d564436e5a)
+<br/>
+### b-) Grafikler <br/>
+Bu kısımda kategorileri grafik olarak görüyoruz.
+![grafik](https://github.com/Adilusta/CoreDemo/assets/83319176/00988c20-b7d8-41c6-9774-1b415a87b3f9)
+<br/>
+### c-) Mesajlar <br/>
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/f84b8e84-2e03-4a37-9cfb-1297bbe2a672)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/2a586f96-402e-48d2-a0d4-16300cf836aa)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/aaa90af2-7fc3-4d80-b843-2900f94ca8f5)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/376874b0-5c2b-4b9d-b4fc-bb50949a3469)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/33806aa7-dcf6-4fe4-8cb0-f2b74db319e8)
+
+
+<br/>
+
+### d-) Kategoriler <br/>
+
+Kategorileri görüp ekleme,düzenleme,silme işlemleri yapabiliyoruz.
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/758ac45c-635e-4674-af7c-aa9737f93384)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/191e3d85-7b84-487f-a8bb-2fd1b269ae61)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/10518c61-9e50-4670-9262-34ca7554c785)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/8ffc2e66-46c2-4ca4-b33a-be0e00927386)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/386fbd71-4326-40c7-a03b-f63aa1d869dc)
+
+### e-) Bloglar <br/>
+Tüm blogları burdan görebiliyoruz.
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/df296ebf-2541-451c-afb5-bf9af57ee017)
+
+### f-) Yorumlar <br/>
+Buradan tüm yorumları görebilir,silebilir veya düzenleyebiliriz.
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/219ad1e4-cae6-42c9-bf75-708ac7fe3020)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/47632ba9-c611-4963-b392-8d279ba76a2b)
+
+### e-) Roller <br/>
+Bu kısımdan rolleri görüp, yeni rol ekleyip silebiliriz ayrıca hangi kullanıcıya hangi rolü atayacağımızı seçebiliriz.
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/a6965c35-1baa-4fbb-b8d2-5be17b61c785)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/e2e47434-56ff-47d4-8bb6-4223f3548143)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/d06b84f9-edbf-421c-97ff-59315bfee19d)
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/351fd8e3-ca4b-4d7f-a606-6f52023785e4) <br/>
+Rol Ata kısmına basıp bu şekilde kullanıcının rollerini güncelleyebiliriz.<br/>
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/84fa4202-624a-4679-a177-a19f2de9ae98)
+
+### f-) Blog Raporu İndirme <br/>
+Bu butona tıklayarak blogları excel dosyası olarak indirebilirsiniz. <br/>
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/3827fbc3-9177-43ff-aa35-9c6b8b753717) <br/>
+Bu şekilde excel tablosu olarak indirip inceleyebilirsiniz. <br/>
+![image](https://github.com/Adilusta/CoreDemo/assets/83319176/c298fe2f-f968-4dec-8b99-6a4a1ecbc19e)
 

@@ -1,6 +1,7 @@
 # CoreDemo
-Geniş kapsamlı bir blog sitesi projesi. Murat Yücedağ hocamızın youtube üzerinden yayınladığı Asp.Net Core 5.0 Proje Kampı projesi ile beraber yapılmaktadır.
-Kayıt olma,giriş yapma gibi özellikler vardır.Giriş yapan yazar,blog ekleyebilir,bloglarını düzenleyebilir veya silebilir.Ayrıca projemiz bir admin paneline sahip olacaktır.
+Bu proje Murat Yücedağ ile ASP. Net Core 5.0 kampında geliştirilmiştir. Proje; kullanıcı,yazar ve admin panelli bir blog sitesidir.
+Projeyi geliştirirken kullandığım bazı yapılar ve teknolojiler şöyle : 
+ASP .NET Core 5.0 ile Entity Framework Core, N-Tier Architecture Mimari yapısına uygun olarak, Repository Design Pattern, LINQ , Fluent Validation Core, Statik ve Dinamik  Raporlama, Code First yaklaşımı, Web API , Asp .Net Core Identity , JWT, Google Chart, Swagger ve Postman ile API Testi,JWT, Dashboard, Api Consume, View Components, Rolleme, Yetkilendirme, Authentication, Authorize, Session Yönetimi, Ajax, Pagination,Backend olarak C# programlama dili, veri tabanı olarak SQL Server, Frontend arayüz tasarımında Html-CSS-Bootstrap kullanılarak Visual Studio 2022 editöründe Kullanıcı, Yazar ve Admin panelli bir blog sitesi geliştirilmiştir.
 
 ## 1-) ANA SAYFA
 ### Layout

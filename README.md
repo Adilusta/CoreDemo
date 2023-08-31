@@ -144,7 +144,7 @@ Tüm blogları burdan görebiliyoruz.
 
 ### f-) Yorumlar <br/>
 Buradan tüm yorumları görebilir,silebilir veya düzenleyebiliriz.
-![image](https://github.com/Adilusta/CoreDemo/assets/83319176/219ad1e4-cae6-42c9-bf75-708ac7fe3020)
+![yorumlar2](https://github.com/Adilusta/CoreDemo/assets/83319176/ca8c66b7-4c37-42a6-965f-816592e31164)
 ![image](https://github.com/Adilusta/CoreDemo/assets/83319176/47632ba9-c611-4963-b392-8d279ba76a2b)
 
 ### g-) Roller <br/>
